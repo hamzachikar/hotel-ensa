@@ -30,24 +30,15 @@ public class CategorieRestController {
     }
 
     @PostMapping(path = "/")
-    public ResponseEntity<Categorie> createCategorie(@RequestBody Categorie categorie) {
+    public ResponseEntity<Categorie> saveOrUpdateCategorie(@RequestBody Categorie categorie) {
         return ResponseEntity.ok(
-                categorieService.createCategorie(categorie)
+                categorieService.saveOrUpdateCategorie(categorie)
         );
     }
-
-    @PutMapping(path = "/{id}")
-    public ResponseEntity<Categorie> updateCategorie(@PathVariable(value = "id") int categorieId,
-                                                     @RequestBody Categorie categorie) {
-        return ResponseEntity.ok(
-                categorieService.modifierCategorie(categorieId, categorie)
-        );
-    }
-
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Boolean> deleteCategorie(@PathVariable(value = "id") int categorieId) {
         return ResponseEntity.ok(
-                categorieService.supprimerCategorie(categorieId)
+                categorieService.supprimerCategorieById(categorieId)
         );
     }
 

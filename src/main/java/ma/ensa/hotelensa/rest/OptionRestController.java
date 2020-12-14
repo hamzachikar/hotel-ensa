@@ -25,12 +25,12 @@ public class OptionRestController {
         this.optionService.deleteOptionById(id);
     }
     @PostMapping("/save")
-    public void saveOrUpdateOption(@RequestBody Option option){
-        this.optionService.saveOption(option);
+    public Option saveOrUpdateOption(@RequestBody Option option){
+        return this.optionService.saveOption(option);
     }
     @PostMapping("/affecterToCategorie")
-    public void affecterOptionToCategorie(@RequestBody Option option, @RequestBody Categorie categorie){
-        this.optionService.affecterOptionToCategorie(option,categorie);
+    public Categorie affecterOptionToCategorie(@RequestBody Option option, @RequestBody Categorie categorie){
+        return  this.optionService.affecterOptionToCategorie(option,categorie);
     }
 
 }

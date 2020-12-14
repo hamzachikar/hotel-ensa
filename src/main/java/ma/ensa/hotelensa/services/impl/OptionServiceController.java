@@ -17,8 +17,8 @@ public class OptionServiceController implements IOptionService {
     @Autowired
     private CategorieJpaRepo categorieRepo;
     @Override
-    public void saveOption(Option option) {
-        this.optionRepo.save(option);
+    public Option saveOption(Option option) {
+        return this.optionRepo.save(option);
     }
 
     @Override
@@ -32,10 +32,9 @@ public class OptionServiceController implements IOptionService {
     }
 
     @Override
-    public void affecterOptionToCategorie(Option option, Categorie categorie) {
+    public Categorie affecterOptionToCategorie(Option option, Categorie categorie) {
         categorie.addOption(option);
-        this.categorieRepo.save(categorie);
-
+        return this.categorieRepo.save(categorie);
     }
 
     @Override
