@@ -1,5 +1,7 @@
 package ma.ensa.hotelensa.beans;
 
+import ma.ensa.hotelensa.ChambreEtats;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +11,8 @@ public class Chambre {
     private int idChambre;
     private int nbreChambre;
     private int nbreEtageChambre;
-    @OneToMany
+    private ChambreEtats etatChambre= ChambreEtats.DISPONIBLE;
+    @ManyToOne
     private Categorie categorie;
     public Chambre() {
     }
@@ -51,5 +54,13 @@ public class Chambre {
 
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
+    }
+
+    public ChambreEtats getEtatChambre() {
+        return etatChambre;
+    }
+
+    public void setEtatChambre(ChambreEtats etatChambre) {
+        this.etatChambre = etatChambre;
     }
 }
