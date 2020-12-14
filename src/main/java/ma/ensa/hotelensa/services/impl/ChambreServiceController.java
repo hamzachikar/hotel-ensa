@@ -1,6 +1,6 @@
 package ma.ensa.hotelensa.services.impl;
 
-import ma.ensa.hotelensa.ChambreEtats;
+import ma.ensa.hotelensa.config.ChambreEtats;
 import ma.ensa.hotelensa.beans.Categorie;
 import ma.ensa.hotelensa.beans.Chambre;
 import ma.ensa.hotelensa.repo.CategorieJpaRepo;

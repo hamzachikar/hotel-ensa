@@ -1,6 +1,6 @@
 package ma.ensa.hotelensa.services;
 
-import ma.ensa.hotelensa.ChambreEtats;
+import ma.ensa.hotelensa.config.ChambreEtats;
 import ma.ensa.hotelensa.beans.Chambre;
 
 import java.util.List;

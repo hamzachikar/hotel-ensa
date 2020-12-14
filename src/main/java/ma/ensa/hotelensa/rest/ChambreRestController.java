@@ -1,6 +1,6 @@
 package ma.ensa.hotelensa.rest;
 
-import ma.ensa.hotelensa.ChambreEtats;
+import ma.ensa.hotelensa.config.ChambreEtats;
 import ma.ensa.hotelensa.beans.Chambre;
 import ma.ensa.hotelensa.services.IChambreService;
 import org.springframework.beans.factory.annotation.Autowired;

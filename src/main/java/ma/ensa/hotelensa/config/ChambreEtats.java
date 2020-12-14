@@ -1,4 +1,4 @@
-package ma.ensa.hotelensa;
+package ma.ensa.hotelensa.config;
 
 public enum ChambreEtats {
     DISPONIBLE,OCCUPE,MAINTENANCE

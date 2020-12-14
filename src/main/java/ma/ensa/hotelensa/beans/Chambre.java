@@ -1,6 +1,6 @@
 package ma.ensa.hotelensa.beans;
 
-import ma.ensa.hotelensa.ChambreEtats;
+import ma.ensa.hotelensa.config.ChambreEtats;
 
 import javax.persistence.*;
 
