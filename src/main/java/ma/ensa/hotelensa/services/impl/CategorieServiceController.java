@@ -9,6 +9,8 @@ import ma.ensa.hotelensa.services.ICategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategorieServiceController implements ICategorieService {
 
@@ -33,6 +35,16 @@ public class CategorieServiceController implements ICategorieService {
     public boolean supprimerCategorie(int categorieId) {
         categorieJpaRepo.deleteById(categorieId);
         return true;
+    }
+
+    @Override
+    public List<Categorie> findAllCategories() {
+        return categorieJpaRepo.findAll();
+    }
+
+    @Override
+    public Categorie findCategorie(String nomCategorie) {
+        return categorieJpaRepo.findFirstByNomCategorie(nomCategorie);
     }
 
 

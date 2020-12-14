@@ -17,17 +17,25 @@ public class ChambreRestController {
     IChambreService chambreService;
 
     @GetMapping(path = "/{etat}")
-    public ResponseEntity<List<Chambre>> getAvailableChambers(@PathVariable(value = "etat") ChambreEtats etat) {
+    public ResponseEntity<List<Chambre>> getChambersByEtat(@PathVariable(value = "etat") ChambreEtats etat) {
         return ResponseEntity.ok(
                 chambreService.getChambersByEtat(etat)
         );
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Chambre> updateChambre(@PathVariable(value = "id") int chambreId,
-                                                  @RequestBody ChambreEtats etat) {
+    public ResponseEntity<Chambre> updateChambreEtat(@PathVariable(value = "id") int chambreId,
+                                                     @RequestBody ChambreEtats etat) {
         return ResponseEntity.ok(
                 chambreService.modifierEtatChambre(chambreId, etat)
+        );
+    }
+
+    @PutMapping(path = "/{chambreId}/categorie/{catId}")
+    public ResponseEntity<Chambre> updateChambreCategorie(@PathVariable(value = "chambreId") int chambreId,
+                                                          @PathVariable(value = "catId") int catId) {
+        return ResponseEntity.ok(
+                chambreService.affecterChambreACategorie(chambreId, catId)
         );
     }
 }

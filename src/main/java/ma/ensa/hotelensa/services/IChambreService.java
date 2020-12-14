@@ -9,4 +9,5 @@ public interface IChambreService {
     Chambre modifierEtatChambre(int chambreId, ChambreEtats etat);
 
     List<Chambre> getChambersByEtat(ChambreEtats etat);
+    public Chambre affecterChambreACategorie(int chambreId, int categorieId);
 }
