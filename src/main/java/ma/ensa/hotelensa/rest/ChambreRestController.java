@@ -24,7 +24,7 @@ public class ChambreRestController {
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Chambre> updateEmployee(@PathVariable(value = "id") int chambreId,
+    public ResponseEntity<Chambre> updateChambre(@PathVariable(value = "id") int chambreId,
                                                   @RequestBody ChambreEtats etat) {
         return ResponseEntity.ok(
                 chambreService.modifierEtatChambre(chambreId, etat)
