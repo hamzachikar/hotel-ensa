@@ -1,6 +1,7 @@
 package ma.ensa.hotelensa.beans;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -43,5 +44,11 @@ public class Categorie {
 
     public void setOptionList(List<Option> optionList) {
         this.optionList = optionList;
+    }
+    public void addOption(Option option){
+        if(this.optionList==null){
+            this.optionList=new ArrayList<>();
+        }
+        this.optionList.add(option);
     }
 }
