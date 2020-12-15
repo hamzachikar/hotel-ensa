@@ -10,7 +10,7 @@ public class Categorie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomCategorie;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.DETACH)
     private List<Option> optionList;
 
     public Categorie() {

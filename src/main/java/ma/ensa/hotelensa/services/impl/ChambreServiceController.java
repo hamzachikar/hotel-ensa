@@ -9,20 +9,41 @@ import ma.ensa.hotelensa.services.IChambreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChambreServiceController implements IChambreService {
     @Autowired
-    ChambreJpaRepo chambreJpaRepo;
+    private ChambreJpaRepo chambreJpaRepo;
     @Autowired
-    CategorieJpaRepo categorieJpaRepo;
+    private CategorieJpaRepo categorieJpaRepo;
+
     @Override
-    public Chambre modifierEtatChambre(int chambreId, ChambreEtats etat) {
-        Chambre chambreToUpdate = chambreJpaRepo.getOne(chambreId);
-        chambreToUpdate.setEtatChambre(etat);
-        chambreJpaRepo.save(chambreToUpdate);
-        return chambreToUpdate;
+    public Chambre saveOrUpdateChambre(Chambre chambre) {
+        return this.chambreJpaRepo.save(chambre);
+    }
+
+    @Override
+    public boolean deleteChambreById(int idChambre) {
+        this.chambreJpaRepo.deleteById(idChambre);
+        return true;
+    }
+
+    @Override
+    public List<Chambre> filterChambreByCategorie(Categorie categorie) {
+        return this.chambreJpaRepo.findAll();
+    }
+
+    @Override
+    public List<Chambre> filterChambreByCategorieId(int idCategorie) {
+        List<Chambre> chambres=new ArrayList<>();
+        Optional<Categorie> categorie=this.categorieJpaRepo.findById(idCategorie);
+        if(categorie.isPresent()){
+            chambres=this.chambreJpaRepo.findAllByCategorie(categorie.get());
+        }
+        return chambres;
     }
 
     @Override

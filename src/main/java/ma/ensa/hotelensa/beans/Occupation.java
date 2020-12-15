@@ -9,9 +9,9 @@ public class Occupation {
     private int idOccupation;
     private Date beginDateOccupation;
     private Date endDateOccupation;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Chambre chambre;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Client client;
 
     public Occupation() {

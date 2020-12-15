@@ -12,7 +12,7 @@ public class Chambre {
     private int nbreChambre;
     private int nbreEtageChambre;
     private ChambreEtats etatChambre= ChambreEtats.DISPONIBLE;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     private Categorie categorie;
     public Chambre() {
     }
