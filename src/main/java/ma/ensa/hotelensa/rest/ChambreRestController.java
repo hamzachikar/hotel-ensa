@@ -31,6 +31,10 @@ public class ChambreRestController {
         }
         return ResponseEntity.badRequest().body("something wrong check logs");
     }
+    @GetMapping("/")
+    public ResponseEntity<List<Chambre>> findAllChambre(){
+        return ResponseEntity.ok(this.chambreService.findAllChambre());
+    }
     @GetMapping("/{etat}")
     public ResponseEntity<List<Chambre>> getChambersByEtat(@PathVariable(value = "etat") ChambreEtats etat) {
         return ResponseEntity.ok(
@@ -46,13 +50,13 @@ public class ChambreRestController {
         );
     }
 
-    @PutMapping("/{chambreId}/categorie/{catId}")
-    public ResponseEntity<Chambre> updateChambreCategorie(@PathVariable(value = "chambreId") int chambreId,
+    @PutMapping("/{chambreId}/to/categorie/{catId}")
+    public ResponseEntity<String> updateChambreCategorie(@PathVariable(value = "chambreId") int chambreId,
                                                           @PathVariable(value = "catId") int catId) {
-        Chambre chambre=chambreService.affecterChambreACategorie(chambreId, catId);
-        if(chambre==null){
-            return  ResponseEntity.badRequest().body(null);
+        boolean isAffected=chambreService.affecterChambreACategorie(chambreId, catId);
+        if(isAffected){
+            return   ResponseEntity.ok("affected");
         }
-        return ResponseEntity.ok(chambre);
+        return ResponseEntity.badRequest().body("not affected");
     }
 }

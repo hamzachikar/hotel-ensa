@@ -64,12 +64,22 @@ public class ChambreServiceController implements IChambreService {
     }
 
     @Override
-    public Chambre affecterChambreACategorie(int chambreId, int categorieId) {
-        Chambre chambreToUpdate =  chambreJpaRepo.getOne(chambreId);
-        Categorie categorie = categorieJpaRepo.getOne(categorieId);
-        chambreToUpdate.setCategorie(categorie);
-        chambreJpaRepo.save(chambreToUpdate);
-        return chambreToUpdate;
+    public boolean affecterChambreACategorie(int chambreId, int categorieId) {
+        Chambre chambreToUpdate =  chambreJpaRepo.findById(chambreId).get();
+        Categorie categorie = categorieJpaRepo.findById(categorieId).get();
+        if(chambreToUpdate!=null&&categorie!=null){
+            chambreToUpdate.setCategorie(categorie);
+            chambreJpaRepo.save(chambreToUpdate);
+            return true;
+        }
+
+
+        return false;
+    }
+
+    @Override
+    public List<Chambre> findAllChambre() {
+        return this.chambreJpaRepo.findAll();
     }
 
 

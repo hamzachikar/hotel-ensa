@@ -14,11 +14,11 @@ import java.util.List;
 public class OptionRestController {
     @Autowired
     private IOptionService optionService;
-    @GetMapping("/findAll")
+    @GetMapping("/")
     public List<Option> findAllOptions(){
         return this.optionService.findAllOption();
     }
-    @GetMapping("/find/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Option> findOptionById(@PathVariable int id){
         Option option= this.optionService.findOptionById(id);
         if(option!=null){
@@ -26,17 +26,21 @@ public class OptionRestController {
         }
         return ResponseEntity.badRequest().body(null);
      }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
     public boolean deleteOptionById(@PathVariable int id){
         return this.optionService.deleteOptionById(id);
     }
-    @PostMapping("/save")
+    @PostMapping("/")
     public ResponseEntity<Option> saveOrUpdateOption(@RequestBody Option option){
         return ResponseEntity.ok(this.optionService.saveOption(option));
     }
-    @PostMapping("/affecterToCategorie")
-    public Categorie affecterOptionToCategorie(@RequestBody Option option, @RequestBody Categorie categorie){
-        return  this.optionService.affecterOptionToCategorie(option,categorie);
+    @PostMapping("/{idOption}/to/categorie/{idCategorie}")
+    public ResponseEntity<String> affecterOptionToCategorie(@PathVariable(value = "idOption") int idOption,@PathVariable(value = "idCategorie")int idCategorie){
+        boolean isAffected=this.optionService.affecterOptionToCategorie(idOption,idCategorie);
+        if(isAffected){
+            return ResponseEntity.ok("affected");
+        }
+        return ResponseEntity.badRequest().body("not affected");
     }
 
 }

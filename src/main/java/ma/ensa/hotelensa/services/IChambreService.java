@@ -13,5 +13,6 @@ public interface IChambreService {
     public List<Chambre> filterChambreByCategorie(Categorie categorie);
     public  List<Chambre> filterChambreByCategorieId(int idCategorie);
     List<Chambre> getChambersByEtat(ChambreEtats etat);
-    public Chambre affecterChambreACategorie(int chambreId, int categorieId);
+    public boolean affecterChambreACategorie(int chambreId, int categorieId);
+    public List<Chambre> findAllChambre();
 }

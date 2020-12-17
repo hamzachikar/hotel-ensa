@@ -9,7 +9,7 @@ public interface IOptionService {
     public Option saveOption(Option option);
     public boolean deleteOptionById(int id);
     public void deleteOption(Option option);
-    public Categorie affecterOptionToCategorie(Option option, Categorie categorie);
+    public boolean affecterOptionToCategorie(int idOption, int idCategorie);
     public List<Option> findAllOption();
     public Option findOptionById(int id);
 }
