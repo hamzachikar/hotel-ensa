@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OptionServiceController implements IOptionService {
@@ -22,8 +23,9 @@ public class OptionServiceController implements IOptionService {
     }
 
     @Override
-    public void deleteOptionById(int id) {
+    public boolean deleteOptionById(int id) {
         this.optionRepo.deleteById(id);
+        return true;
     }
 
     @Override
@@ -44,6 +46,10 @@ public class OptionServiceController implements IOptionService {
 
     @Override
     public Option findOptionById(int id) {
-        return this.optionRepo.findById(id).get();
+        Optional<Option> option=this.optionRepo.findById(id);
+        if(option.isPresent()){
+            return option.get();
+        }
+        return null;
     }
 }

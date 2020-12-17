@@ -23,7 +23,7 @@ public class CategorieRestController {
     }
 
     @GetMapping(path = "/{nom}")
-    public ResponseEntity<Categorie> findAllCategories(@PathVariable(value = "nom") String nomCategorie) {
+    public ResponseEntity<Categorie> findCategorie(@PathVariable(value = "nom") String nomCategorie) {
         return ResponseEntity.ok(
                 categorieService.findCategorie(nomCategorie)
         );

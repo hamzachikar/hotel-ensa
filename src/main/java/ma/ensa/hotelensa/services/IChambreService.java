@@ -7,7 +7,8 @@ import ma.ensa.hotelensa.beans.Chambre;
 import java.util.List;
 
 public interface IChambreService {
-    public Chambre saveOrUpdateChambre(Chambre chambre);
+    public Chambre saveChambre(Chambre chambre);
+    public Chambre modifierEtatChmabre(int idChambre,ChambreEtats etat);
     public boolean deleteChambreById(int idChambre);
     public List<Chambre> filterChambreByCategorie(Categorie categorie);
     public  List<Chambre> filterChambreByCategorieId(int idCategorie);

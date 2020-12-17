@@ -4,11 +4,13 @@ import ma.ensa.hotelensa.beans.Categorie;
 import ma.ensa.hotelensa.beans.Option;
 import ma.ensa.hotelensa.services.IOptionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/option")
+@RestController
+@RequestMapping("/option")
 public class OptionRestController {
     @Autowired
     private IOptionService optionService;
@@ -17,16 +19,20 @@ public class OptionRestController {
         return this.optionService.findAllOption();
     }
     @GetMapping("/find/{id}")
-    public Option findOptionById(@PathVariable int id){
-        return this.optionService.findOptionById(id);
-    }
+    public ResponseEntity<Option> findOptionById(@PathVariable int id){
+        Option option= this.optionService.findOptionById(id);
+        if(option!=null){
+            return ResponseEntity.ok(option);
+        }
+        return ResponseEntity.badRequest().body(null);
+     }
     @DeleteMapping("delete/{id}")
-    public void deleteOptionById(@PathVariable int id){
-        this.optionService.deleteOptionById(id);
+    public boolean deleteOptionById(@PathVariable int id){
+        return this.optionService.deleteOptionById(id);
     }
     @PostMapping("/save")
-    public Option saveOrUpdateOption(@RequestBody Option option){
-        return this.optionService.saveOption(option);
+    public ResponseEntity<Option> saveOrUpdateOption(@RequestBody Option option){
+        return ResponseEntity.ok(this.optionService.saveOption(option));
     }
     @PostMapping("/affecterToCategorie")
     public Categorie affecterOptionToCategorie(@RequestBody Option option, @RequestBody Categorie categorie){

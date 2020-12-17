@@ -21,8 +21,20 @@ public class ChambreServiceController implements IChambreService {
     private CategorieJpaRepo categorieJpaRepo;
 
     @Override
-    public Chambre saveOrUpdateChambre(Chambre chambre) {
+    public Chambre saveChambre(Chambre chambre) {
         return this.chambreJpaRepo.save(chambre);
+    }
+
+    @Override
+    public Chambre modifierEtatChmabre(int idChambre, ChambreEtats etat) {
+        Optional<Chambre> chambre=this.chambreJpaRepo.findById(idChambre);
+        if(chambre.isPresent()){
+            chambre.ifPresent(
+                    oldChambre -> oldChambre.setEtatChambre(etat)
+            );
+            return chambre.get();
+        }
+        return null;
     }
 
     @Override
