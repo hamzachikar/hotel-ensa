@@ -8,7 +8,6 @@ import java.util.List;
 public interface IOptionService {
     public Option saveOption(Option option);
     public boolean deleteOptionById(int id);
-    public void deleteOption(Option option);
     public boolean affecterOptionToCategorie(int idOption, int idCategorie);
     public List<Option> findAllOption();
     public Option findOptionById(int id);

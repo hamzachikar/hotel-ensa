@@ -29,11 +29,6 @@ public class OptionServiceController implements IOptionService {
     }
 
     @Override
-    public void deleteOption(Option option) {
-        this.optionRepo.delete(option);
-    }
-
-    @Override
     public boolean affecterOptionToCategorie(int idOption, int idCategorie) {
         Categorie categorie=this.categorieRepo.findById(idCategorie).get();
         Option option=this.optionRepo.findById(idOption).get();

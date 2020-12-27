@@ -26,6 +26,11 @@ public class CategorieServiceController implements ICategorieService {
     }
 
     @Override
+    public Categorie findByNomCategorie(String nomCategorie) {
+        return this.categorieJpaRepo.findByNomCategorie(nomCategorie);
+    }
+
+    @Override
     public List<Categorie> findAllCategories() {
         return categorieJpaRepo.findAll();
     }

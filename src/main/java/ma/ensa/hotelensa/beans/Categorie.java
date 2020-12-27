@@ -10,12 +10,18 @@ public class Categorie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomCategorie;
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.DETACH,fetch = FetchType.EAGER)
     private List<Option> optionList;
 
     public Categorie() {
     }
-
+    public Categorie(String nomCategorie) {
+        this.nomCategorie = nomCategorie;
+    }
+    public Categorie(String nomCategorie, List<Option> optionList) {
+        this.nomCategorie = nomCategorie;
+        this.optionList = optionList;
+    }
     public Categorie(int id, String nomCategorie, List<Option> optionList) {
         this.id = id;
         this.nomCategorie = nomCategorie;

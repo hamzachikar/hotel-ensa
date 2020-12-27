@@ -4,8 +4,6 @@ import ma.ensa.hotelensa.config.ChambreEtats;
 import ma.ensa.hotelensa.beans.Chambre;
 import ma.ensa.hotelensa.services.IChambreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +25,7 @@ public class ChambreRestController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteChambreById(@PathVariable int id){
         if(this.chambreService.deleteChambreById(id)){
-            return ResponseEntity.ok("chambre deleted");
+            return ResponseEntity.ok("deleted");
         }
         return ResponseEntity.badRequest().body("something wrong check logs");
     }

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CategorieJpaRepo extends JpaRepository<Categorie,Integer> {
     public Categorie findFirstByNomCategorie(String nomCategorie);
+    Categorie findByNomCategorie(String nomCategorie);
 }

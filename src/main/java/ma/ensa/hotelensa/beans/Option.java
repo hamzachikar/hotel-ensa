@@ -14,6 +14,11 @@ public class Option {
 
     public Option() {
     }
+    public Option(String nomOption, int quantite, double priceOption) {
+        this.nomOption = nomOption;
+        this.quantite = quantite;
+        this.priceOption = priceOption;
+    }
 
     public Option(int idOption, String nomOption, int quantite, double priceOption) {
         this.idOption = idOption;

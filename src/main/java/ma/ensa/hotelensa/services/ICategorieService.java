@@ -10,4 +10,5 @@ public interface ICategorieService {
     Categorie saveOrUpdateCategorie(Categorie categorie);
     boolean supprimerCategorieById(int categorieId);
 
+    Categorie findByNomCategorie(String categorieTest);
 }

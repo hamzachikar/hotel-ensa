@@ -16,7 +16,15 @@ public class Chambre {
     private Categorie categorie;
     public Chambre() {
     }
-
+    public Chambre(int nbreChambre, int nbreEtageChambre, Categorie categorie) {
+        this.nbreChambre = nbreChambre;
+        this.nbreEtageChambre = nbreEtageChambre;
+        this.categorie = categorie;
+    }
+    public Chambre(int nbreChambre,int nbreEtageChambre) {
+        this.nbreChambre = nbreChambre;
+        this.nbreEtageChambre = nbreEtageChambre;
+    }
     public Chambre(int idChambre, int nbreChambre, int nbreEtageChambre, Categorie categorie) {
         this.idChambre = idChambre;
         this.nbreChambre = nbreChambre;
