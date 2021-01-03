@@ -15,8 +15,8 @@ public class ClientRestController {
     private IClientService clientService;
 
     @PostMapping("/")
-    public ResponseEntity<Client> saveClient(@RequestBody Client c){
-        return ResponseEntity.ok(this.clientService.saveClient(c));
+    public ResponseEntity<Client> saveClient(@RequestBody Client client){
+        return ResponseEntity.ok(this.clientService.saveClient(client));
     }
     @GetMapping("/")
     public ResponseEntity<List<Client>> findAll(){

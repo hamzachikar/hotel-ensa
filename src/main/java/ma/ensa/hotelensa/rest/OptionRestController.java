@@ -30,8 +30,8 @@ public class OptionRestController {
         return this.optionService.deleteOptionById(id);
     }
     @PostMapping("/")
-    public ResponseEntity<Option> saveOrUpdateOption(@RequestBody Option opt){
-        return ResponseEntity.ok(this.optionService.saveOption(opt));
+    public ResponseEntity<Option> saveOrUpdateOption(@RequestBody Option option){
+        return ResponseEntity.ok(this.optionService.saveOption(option));
     }
     @PostMapping("/{idOption}/to/categorie/{idCategorie}")
     public ResponseEntity<String> affecterOptionToCategorie(@PathVariable(value = "idOption") int idOption,@PathVariable(value = "idCategorie")int idCategorie){

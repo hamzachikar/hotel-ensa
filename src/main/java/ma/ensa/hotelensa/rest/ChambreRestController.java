@@ -17,9 +17,9 @@ public class ChambreRestController {
     IChambreService chambreService;
 
     @PostMapping("/")
-    public ResponseEntity<Chambre> saveOrUpdateChambre(@RequestBody Chambre ch){
+    public ResponseEntity<Chambre> saveOrUpdateChambre(@RequestBody Chambre chambre){
         return  ResponseEntity.ok(
-          this.chambreService.saveChambre(ch)
+          this.chambreService.saveChambre(chambre)
         );
     }
     @DeleteMapping("/{id}")
