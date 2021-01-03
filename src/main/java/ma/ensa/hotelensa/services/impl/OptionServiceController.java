@@ -30,10 +30,11 @@ public class OptionServiceController implements IOptionService {
 
     @Override
     public boolean affecterOptionToCategorie(int idOption, int idCategorie) {
-        Categorie categorie=this.categorieRepo.findById(idCategorie).get();
-        Option option=this.optionRepo.findById(idOption).get();
-        if(categorie!=null&&option!=null){
-            categorie.addOption(option);
+        Optional<Categorie> categorieToUpdate=this.categorieRepo.findById(idCategorie);
+        Optional<Option> option=this.optionRepo.findById(idOption);
+        if(categorieToUpdate.isPresent()&&option.isPresent()){
+            Categorie categorie=categorieToUpdate.get();
+            categorie.addOption(option.get());
             this.categorieRepo.save(categorie);
             return true;
         }

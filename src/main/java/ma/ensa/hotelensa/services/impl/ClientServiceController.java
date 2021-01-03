@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientServiceController implements IClientService {
@@ -24,6 +25,10 @@ public class ClientServiceController implements IClientService {
 
     @Override
     public Client findClientById(int id) {
-        return this.repo.findById(id).get();
+        Optional<Client> client=this.repo.findById(id);
+        if(client.isPresent()){
+            return client.get();
+        }
+        return null;
     }
 }

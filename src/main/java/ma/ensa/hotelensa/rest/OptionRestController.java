@@ -1,6 +1,5 @@
 package ma.ensa.hotelensa.rest;
 
-import ma.ensa.hotelensa.beans.Categorie;
 import ma.ensa.hotelensa.beans.Option;
 import ma.ensa.hotelensa.services.IOptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,8 @@ public class OptionRestController {
         return this.optionService.deleteOptionById(id);
     }
     @PostMapping("/")
-    public ResponseEntity<Option> saveOrUpdateOption(@RequestBody Option option){
-        return ResponseEntity.ok(this.optionService.saveOption(option));
+    public ResponseEntity<Option> saveOrUpdateOption(@RequestBody Option opt){
+        return ResponseEntity.ok(this.optionService.saveOption(opt));
     }
     @PostMapping("/{idOption}/to/categorie/{idCategorie}")
     public ResponseEntity<String> affecterOptionToCategorie(@PathVariable(value = "idOption") int idOption,@PathVariable(value = "idCategorie")int idCategorie){

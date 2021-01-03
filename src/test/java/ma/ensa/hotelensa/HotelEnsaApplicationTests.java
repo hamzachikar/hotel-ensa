@@ -26,19 +26,19 @@ class HotelEnsaApplicationTests {
 
 
 	@Test
-	public void categorieServiceTest(){
+	void categorieServiceTest(){
 		Categorie categorie=categorieService.saveOrUpdateCategorie(new Categorie("categorietest"));
 		assertNotNull(categorie);
 	}
 	@Test
-	public void optionServiceTest(){
+	void optionServiceTest(){
 		Option option=optionService.saveOption(new Option("optiontest",1,1000));
 		assertNotNull(option);
 		Categorie categorie=categorieService.saveOrUpdateCategorie(new Categorie("categorietest"));
 		assertTrue(optionService.affecterOptionToCategorie(option.getIdOption(),categorie.getId()));
 	}
 	@Test
-	public void chambreServiceTest(){
+	void chambreServiceTest(){
 		Chambre chambre=chambreService.saveChambre(new Chambre(10,1));
 		assertNotNull(chambre);
 		Categorie categorie=categorieService.saveOrUpdateCategorie(new Categorie("categorietest"));

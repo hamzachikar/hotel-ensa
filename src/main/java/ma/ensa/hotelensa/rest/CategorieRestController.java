@@ -30,9 +30,9 @@ public class CategorieRestController {
     }
 
     @PostMapping(path = "/")
-    public ResponseEntity<Categorie> saveOrUpdateCategorie(@RequestBody Categorie categorie) {
+    public ResponseEntity<Categorie> saveOrUpdateCategorie(@RequestBody Categorie categ) {
         return ResponseEntity.ok(
-                categorieService.saveOrUpdateCategorie(categorie)
+                categorieService.saveOrUpdateCategorie(categ)
         );
     }
     @DeleteMapping(path = "/{id}")
