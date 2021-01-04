@@ -2,6 +2,7 @@ package ma.ensa.hotelensa.beans;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
 public class Occupation {
     @Id
