@@ -22,7 +22,7 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-   test:
+  test:
     name: Unit Test
     runs-on: ubuntu-latest
 
